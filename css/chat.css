@@ -1,0 +1,59 @@
+body {
+	font-family: Verdana;
+}
+.tabelleAussen {
+	width: 98%;
+	height: 580px;;
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #eee;
+	padding: 0.5em;
+}
+.tabelleInnen {
+	display: table;
+	width: 100%;
+}
+.zeile {
+	display: table-row;
+}
+.zelle {
+	display: table-cell;
+}
+label, input, button {
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+label {
+	font-size: 0.9em;
+}
+#inputField {
+	font-family: Courier;
+	font-size: 1.0em;
+	width: 100%;
+}
+#outputField {
+	font-family: Courier;
+	width: 100%;
+	height: 20em;
+	background-color: #fff;
+	overflow: auto;
+	border: 1px solid black;
+}
+#buttNeuVerbindenID {
+	float: left;
+}
+#buttVerbindungBeendenID {
+	float: left;
+}
+
+#clearChatID {
+	float: right;
+}
+#gameReady{
+	float: right;
+}
+p {
+	font-family: Courier;
+}

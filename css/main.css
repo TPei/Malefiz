@@ -1,0 +1,126 @@
+body{
+	background: none repeat scroll 0 0 white; /*#EEEEEE;*/
+	
+}
+
+#wrapper{
+	width: 960px;
+	height: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.clear{
+	clear: both;
+}
+
+.view{
+	display: none;
+	margin-top: -1px;
+}
+
+#invites{
+	float: left;
+	width: 180px;
+	height: 600px;
+	border: 1px solid black;
+	/*background: #eee*/
+	background: none repeat scroll 0 0 #eee;
+}
+
+#chat{
+	float: left;
+	width: 576px;
+	height: 600px;
+	border: 1px solid black;
+	background: #eee;
+}
+
+#onlineUsers{
+	float: left;
+	width: 180px;
+	height: 600px;
+	border: 1px solid black;
+	/*background: #eee;*/
+	background: none repeat scroll 0 0 #eee;
+	padding: 5px;
+}
+
+#scoreView{
+	width: 100%;
+	height: 600px;
+	border: 1px solid black;
+	background: none repeat scroll 0 0 #eee;
+}
+
+#gameView{
+	width: 100%;
+	height: 600px;
+	border: 1px solid black;
+	background: none repeat scroll 0 0 #eee;
+}
+
+/* ------------------------------------------------
+------------------tabs-Auswahl---------------------
+-------------------------------------------------*/
+#tabber {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	display: none;
+	height: 29px;
+	overflow: hidden;
+}
+
+#tabber ul {
+	padding:0;
+	margin: 0;
+	font-size: 12pt;
+}
+	
+#tabber li {
+	color: white;
+	cursor: pointer;
+	float: left;
+	height: 29px;
+	list-style-type: none;
+	margin-right: 10px;
+	position: relative;
+	text-align: left;
+	text-indent: 0;
+}
+
+#tabber li.active {
+	font-weight: bold;
+	color: #ee9900;
+	text-shadow: none;
+}
+
+#tabber li span {
+	background: none repeat scroll 0 0 #708080;
+	border-left: 1px solid black;
+	border-radius: 5px 5px 0 0;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	display: block;
+	height: 22px;
+	line-height: 20px;
+	margin-top: 5px;
+	padding: 0 15px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
+}
+
+#tabber li:hover span{
+	height: 27px;
+	line-height: 28px;
+	margin-top: 0;
+}
+
+#tabber li.active span{
+	background: none repeat scroll 0 0 #eee;
+	height: 28px;
+	margin-top: 0px;
+	line-height: 28px;
+}

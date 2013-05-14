@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Thomasfiz - Malefiz for the web</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/main.css" type="text/css"/>
+	<link rel="stylesheet" href="css/chat.css" type="text/css"/>
+	<script type="text/javascript" src="js/chat.js"></script>	
+	<script type="text/javascript" src="js/User.js"></script>	
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/tabLogic.js"></script>
+	<script type="text/javascript" src="js/start.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="statusDiv"></div>
+		
+		<div id="tabber">
+			<ul>
+				<li id="homeTab" rel="0" class="active"><span>Home</span></li>
+				<li id="gameTab" rel="1"><span>Spiel</span></li>
+				<li id="scoreTab" rel="2"><span>High Score</span></li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		
+		<div class="clear"></div>
+		
+		<div id ="homeView" class="view">
+			<div id="invites">Pending invites</div>
+			<div id="chat">
+			<div class="tabelleAussen">
+				<div class="zeile">
+					<h3>Willkommen in der Lobby</h3>
+					<p id="pServerID">
+						&nbsp;
+					</p>
+				</div>
+				<div class="zeile">
+					<div class="zelle">
+						<div id="outputField"></div>
+					</div>
+					
+				</div>
+				<div class="zeile">
+					<div class="zelle">
+						<button id="clearChatID">
+							clear
+						</button>
+					</div>
+				</div>
+				<div class="zeile">
+					<div class="zelle">
+						<label>Nachricht: </label>
+						<input id="inputField" type="text" />
+						<button id="buttSendenID">
+							senden
+						</button>
+					</div>
+				</div>
+				<div class="zeile">
+					<div class="tabelleInnen">
+						<div class="zeile">
+							<div class="zelle">
+								<button id="buttNeuVerbindenID">
+									reconnect
+								</button>
+								<button id="buttVerbindungBeendenID">
+									beenden
+								</button>
+								<button id="gameReady">
+									Spielbereit
+								</button>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+			<div id="onlineUsers">
+				<p>Aktive Mitglieder</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="gameView" class="view">
+			<p>Test game</p>
+		
+		</div>
+		
+		<div id="scoreView" class="view">
+			<p>Test score</p>
+		
+		</div>
+
+	</div>
+</body>
+</html>

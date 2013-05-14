@@ -1,0 +1,2 @@
+/* everything that needs to be invoked when a player closes the tab
+such as removing the user from the active user list... */
