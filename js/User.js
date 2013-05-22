@@ -33,7 +33,7 @@ User.load = function(){
     var storage = JSON.parse(localStorage.getItem("user"));
     
     if(storage === null){
-	    return null;
+	    return false;
     }
     return new User(storage.username, storage.highscore);
 }

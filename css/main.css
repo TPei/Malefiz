@@ -1,25 +1,29 @@
-body{
-	background: none repeat scroll 0 0 white; /*#EEEEEE;*/
-	
+* {
+	margin: 0;
+	padding: 0;
 }
 
-#wrapper{
+body {
+	background: none repeat scroll 0 0 white; /*#EEEEEE;*/
+}
+
+#wrapper {
 	width: 960px;
 	height: 600px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.clear{
+.clear {
 	clear: both;
 }
 
-.view{
+.view {
 	display: none;
 	margin-top: -1px;
 }
 
-#invites{
+#invites {
 	float: left;
 	width: 180px;
 	height: 600px;
@@ -28,7 +32,7 @@ body{
 	background: none repeat scroll 0 0 #eee;
 }
 
-#chat{
+#chat {
 	float: left;
 	width: 576px;
 	height: 600px;
@@ -36,7 +40,7 @@ body{
 	background: #eee;
 }
 
-#onlineUsers{
+#onlineUsers {
 	float: left;
 	width: 180px;
 	height: 600px;
@@ -46,18 +50,46 @@ body{
 	padding: 5px;
 }
 
-#scoreView{
+#scoreView,#gameView {
 	width: 100%;
-	height: 600px;
+	min-height: 600px;
 	border: 1px solid black;
 	background: none repeat scroll 0 0 #eee;
 }
 
-#gameView{
-	width: 100%;
-	height: 600px;
+.game #playInfo {
 	border: 1px solid black;
-	background: none repeat scroll 0 0 #eee;
+	float: right;
+	width: 300px;
+	height: 400px;
+}
+
+#playField {
+	margin-left: 20px;
+	float: left;
+}
+
+#playField table tr td {
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+}
+
+#playField table tr td canvas {
+	background-color: white;
+	display: block;
+	height: 30px;
+	width: 30px;
+}
+
+#playField table tr td canvas:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+#playField table tr td.field {
+	border: 1px solid black;
+	border-radius: 15px;
+	cursor: pointer;
 }
 
 /* ------------------------------------------------
@@ -74,11 +106,11 @@ body{
 }
 
 #tabber ul {
-	padding:0;
+	padding: 0;
 	margin: 0;
 	font-size: 12pt;
 }
-	
+
 #tabber li {
 	color: white;
 	cursor: pointer;
@@ -112,13 +144,13 @@ body{
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
 }
 
-#tabber li:hover span{
+#tabber li:hover span {
 	height: 27px;
 	line-height: 28px;
 	margin-top: 0;
 }
 
-#tabber li.active span{
+#tabber li.active span {
 	background: none repeat scroll 0 0 #eee;
 	height: 28px;
 	margin-top: 0px;
