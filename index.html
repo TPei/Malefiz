@@ -1,97 +1,177 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Thomasfiz - Malefiz for the web</title>
-<meta charset="utf-8" />
+    <title>Thomasfiz - Malefiz for the web</title>
+    <meta charset="utf-8"/>
 
-<link rel="stylesheet" href="css/main.css" type="text/css" />
-<link rel="stylesheet" href="css/chat.css" type="text/css" />
+    <link rel="stylesheet" href="css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="css/chat.css" type="text/css"/>
 
-<script type="text/javascript" src="js/Chat.js"></script>
-<script type="text/javascript" src="js/MainView.js"></script>
-<script type="text/javascript" src="js/Util.js"></script>
-<script type="text/javascript" src="js/User.js"></script>
-<script type="text/javascript" src="js/Game.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/util/DepthFirstSearch.js"></script>
+    <script type="text/javascript" src="js/util/Util.js"></script>
+
+    <script type="text/javascript" src="js/game/Game.js"></script>
+    <script type="text/javascript" src="js/game/GameUtil.js"></script>
+    <script type="text/javascript" src="js/game/GameSetup.js"></script>
+    <script type="text/javascript" src="js/game/GameMessage.js"></script>
+    <script type="text/javascript" src="js/game/GameChat.js"></script>
+    <script type="text/javascript" src="js/game/Player.js"></script>
+    <script type="text/javascript" src="js/game/Opponent.js"></script>
+    <script type="text/javascript" src="js/game/Piece.js"></script>
+    <script type="text/javascript" src="js/game/Field.js"></script>
+
+    <script type="text/javascript" src="js/chat/WSConnection.js"></script>
+    <script type="text/javascript" src="js/chat/Chat.js"></script>
+    <script type="text/javascript" src="js/chat/ChatMessage.js"></script>
+
+    <script type="text/javascript" src="js/ViewController.js"></script>
+    <script type="text/javascript" src="js/User.js"></script>
+    <script type="text/javascript" src="js/Client.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
 </head>
 <body>
-	<div id="wrapper">
-		<div id="statusDiv"></div>
+<div id="wrapper">
+    <div id="statusDiv"></div>
 
-		<div id="tabber">
-			<ul>
-				<li id="homeTab" rel="0" class="active"><span>Home</span></li>
-				<li id="gameTab" rel="1"><span>Spiel</span></li>
-				<li id="scoreTab" rel="2"><span>High Score</span></li>
-			</ul>
-			<div class="clear"></div>
-		</div>
+    <div id="tabber">
+        <ul>
+            <li id="homeTab" rel="0" class="active"><span>Home</span></li>
+            <li id="gameTab" rel="1"><span>Spiel</span></li>
+            <li id="scoreTab" rel="2"><span>High Score</span></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
 
-		<div class="clear"></div>
+    <div class="clear"></div>
 
-		<div id="homeView" class="view">
-			<div id="invites">Pending invites</div>
-			<div id="chat">
-				<div class="tabelleAussen">
-					<div class="zeile">
-						<h3>Willkommen in der Lobby</h3>
-						<p id="pServerID">&nbsp;</p>
-					</div>
-					<div class="zeile">
-						<div class="zelle">
-							<div id="outputField"></div>
-						</div>
+    <div id="homeView" class="view">
+        <div id="displayParty"><p><b>Gruppenmitglieder</b></p></div>
 
-					</div>
-					<div class="zeile">
-						<div class="zelle">
-							<button id="clearChatID">clear</button>
-						</div>
-					</div>
-					<div class="zeile">
-						<div class="zelle">
-							<label>Nachricht: </label> <input id="inputField" type="text" />
-							<button id="buttSendenID">senden</button>
-						</div>
-					</div>
-					<div class="zeile">
-						<div class="tabelleInnen">
-							<div class="zeile">
-								<div class="zelle">
-									<button id="buttNeuVerbindenID">reconnect</button>
-									<button id="buttVerbindungBeendenID">beenden</button>
-									<button id="gameReady">Spielbereit</button>
+        <div id="chat">
+            <div class="outerTable">
+                <div class="row">
+                    <h3>Willkommen in der Lobby</h3>
 
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                    <p id="pServerID">&nbsp;</p>
+                </div>
+                <div class="row">
+                    <div class="cell">
+                        <div id="outputField"></div>
+                    </div>
 
-			</div>
-			<div id="onlineUsers">
-				<p>Aktive Mitglieder</p>
-			</div>
-			<div class="clear"></div>
-		</div>
+                </div>
+                <div class="row">
+                    <div class="cell">
+                        <button id="clearChatID">clear</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell">
+                        <label>Nachricht: </label> <input id="inputField" type="text"/>
+                        <button id="sendButton">senden</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="innerTable">
+                        <div class="row">
+                            <div class="cell">
+                                <button id="reconnectButton">reconnect</button>
+                                <button id="closeConnectionButton">beenden</button>
+                                <button id="gameReady">Spielbereit</button>
+                                <button id="gameUnReady">Nicht Spielbereit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-		<div id="gameView" class="view">
-			<p>Test game</p>
-			
-			<div class="game">
-				<div id="playInfo">Informationen über die Spieler</div>
-				<div id="playField"></div>
-			</div>
-			
+        </div>
+        <div id="onlineUsers">
+            <p><b>Aktive Mitglieder</b></p>
+        </div>
+        <div class="clear"></div>
+        <div id="savedGames"><p><b>Gespeicherte Spiele</b></p></div>
+    </div>
 
-		</div>
+    <div id="gameView" class="view">
 
-		<div id="scoreView" class="view">
-			<p>Test score</p>
+        <div class="game">
 
-		</div>
+            <div id="playInfo">
+                <p>Spielsteuerung</p>
 
-	</div>
+                <div class="pieceSelection">
+                    <div class="pieceSelector active">
+                        <p>1</p>
+                    </div>
+                    <div class="pieceSelector">
+                        <p>2</p>
+                    </div>
+                    <div class="pieceSelector">
+                        <p>3</p>
+                    </div>
+                    <div class="pieceSelector">
+                        <p>4</p>
+                    </div>
+                    <div class="pieceSelector">
+                        <p>5</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <button id="dice">Würfeln</button>
+                <button id="shortPauseGame">Kurze Pause anfordern</button>
+                <button id="resumeShortPausedGame">Fortfahren</button>
+                <div class="clear"></div>
+                <button id="longPauseGame">Spiel lang pausieren</button>
+                <button id="playerForfeitButton">Aufgeben</button>
+                <div class="clear"></div>
+                <p id="waiting">Warten auf Mitspieler</p>
+
+                <p id="myTurn">Am Zug</p>
+
+            </div>
+
+            <div id="playField">
+                <p><b>Kein aktives Spiel</b></p>
+            </div>
+
+            <div class="clear"></div>
+            <div id="gameChatWrapper">
+                <p>Chat</p>
+
+                <div id="gameChat">
+                    <div class="tabelleAussen2">
+                        <div class="row">
+
+                            <p id="gamepServerID">&nbsp;</p>
+                        </div>
+                        <div class="row">
+                            <div class="cell">
+                                <div id="gameOutputField"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="cell">
+                                <label>Nachricht: </label> <input id="gameInputField" type="text"/>
+                                <button id="gameSendButton">senden</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="clear"></div>
+
+     
+    </div>
+    
+    <div id="scoreView" class="view">
+    	<p><b>High Score</b></p>
+    </div>
+</div>
 </body>
 </html>

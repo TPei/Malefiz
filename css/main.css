@@ -1,158 +1,244 @@
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-	background: none repeat scroll 0 0 white; /*#EEEEEE;*/
+    background: none repeat scroll 0 0 white; /*#EEEEEE;*/
+    font-family: 'Verdana', sans-serif;
+    font-size: 14px;
 }
 
 #wrapper {
-	width: 960px;
-	height: 600px;
-	margin-left: auto;
-	margin-right: auto;
+    width: 960px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .clear {
-	clear: both;
+    clear: both;
 }
 
 .view {
-	display: none;
-	margin-top: -1px;
+    margin-top: -1px;
 }
 
-#invites {
-	float: left;
-	width: 180px;
-	height: 600px;
-	border: 1px solid black;
-	/*background: #eee*/
-	background: none repeat scroll 0 0 #eee;
+#displayParty {
+    float: left;
+    width: 175px;
+    height: 295px;
+    border: 1px solid black;
+    background: none repeat scroll 0 0 #eee;
+    padding: 5px;
+}
+
+
+#savedGames {
+    float: left;
+    width: 175px;
+    height: 293px;
+    border: 1px solid black;
+    background: none repeat scroll 0 0 #eee;
+    margin-top: -305px;
+    padding: 5px;
 }
 
 #chat {
-	float: left;
-	width: 576px;
-	height: 600px;
-	border: 1px solid black;
-	background: #eee;
+    float: left;
+    width: 576px;
+    height: 610px;
+    border: 1px solid black;
+    background: #eee;
 }
 
 #onlineUsers {
-	float: left;
-	width: 180px;
-	height: 600px;
-	border: 1px solid black;
-	/*background: #eee;*/
-	background: none repeat scroll 0 0 #eee;
-	padding: 5px;
+    float: left;
+    width: 180px;
+    height: 600px;
+    border: 1px solid black;
+    background: none repeat scroll 0 0 #eee;
+    padding: 5px;
 }
 
-#scoreView,#gameView {
-	width: 100%;
-	min-height: 600px;
-	border: 1px solid black;
-	background: none repeat scroll 0 0 #eee;
-}
-
-.game #playInfo {
-	border: 1px solid black;
-	float: right;
-	width: 300px;
-	height: 400px;
+#gameView, #scoreView {
+    width: 100%;
+    min-height: 600px;
+    border: 1px solid black;
+    background: none repeat scroll 0 0 #eee;
 }
 
 #playField {
-	margin-left: 20px;
-	float: left;
+    width: 500px;
+    height: 520px;
+    margin-left: 20px;
+    float: left;
 }
 
 #playField table tr td {
-	width: 30px;
-	height: 30px;
-	overflow: hidden;
+    width: 28px;
+    height: 28px;
+    overflow: hidden;
 }
 
 #playField table tr td canvas {
-	background-color: white;
-	display: block;
-	height: 30px;
-	width: 30px;
+    background-color: white;
+    display: block;
+    height: 28px;
+    width: 28px;
 }
 
-#playField table tr td canvas:hover {
-	background-color: rgba(0, 0, 0, 0.1);
+#playField table tr td canvas.clickable {
+    cursor: pointer;
+}
+
+#playField table tr td canvas.clickable:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 #playField table tr td.field {
-	border: 1px solid black;
-	border-radius: 15px;
-	cursor: pointer;
+    border: 1px solid black;
+    border-radius: 16px;
+}
+
+#playInfo {
+    border: 1px solid black;
+    float: right;
+    width: 350px;
+    height: 200px;
+    padding: 5px;
+}
+#gameChatWrapper {
+    border: 1px solid black;
+    float: right;
+    width: 350px;
+    height: 350px;
+    padding: 5px;
+    margin-top: -300px;
+}
+
+#dice{
+    display: block;
+}
+
+.pieceSelection {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.pieceSelector {
+    float: left;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid grey;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+.pieceSelector.active,
+.pieceSelector.active:hover{
+    background-color: black;
+    color: white;
+}
+
+.pieceSelector:hover {
+    background-color: transparent;
 }
 
 /* ------------------------------------------------
 ------------------tabs-Auswahl---------------------
 -------------------------------------------------*/
 #tabber {
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-o-user-select: none;
-	user-select: none;
-	display: none;
-	height: 29px;
-	overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    height: 29px;
+    overflow: hidden;
 }
 
 #tabber ul {
-	padding: 0;
-	margin: 0;
-	font-size: 12pt;
+    padding: 0;
+    margin: 0;
+    font-size: 12pt;
 }
 
 #tabber li {
-	color: white;
-	cursor: pointer;
-	float: left;
-	height: 29px;
-	list-style-type: none;
-	margin-right: 10px;
-	position: relative;
-	text-align: left;
-	text-indent: 0;
+    color: white;
+    cursor: pointer;
+    float: left;
+    height: 29px;
+    list-style-type: none;
+    margin-right: 10px;
+    position: relative;
+    text-align: left;
+    text-indent: 0;
 }
 
 #tabber li.active {
-	font-weight: bold;
-	color: #ee9900;
-	text-shadow: none;
+    font-weight: bold;
+    color: #ee9900;
+    text-shadow: none;
 }
 
 #tabber li span {
-	background: none repeat scroll 0 0 #708080;
-	border-left: 1px solid black;
-	border-radius: 5px 5px 0 0;
-	border-right: 1px solid black;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
-	display: block;
-	height: 22px;
-	line-height: 20px;
-	margin-top: 5px;
-	padding: 0 15px;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
+    background: none repeat scroll 0 0 #708080;
+    border-left: 1px solid black;
+    border-radius: 5px 5px 0 0;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    display: block;
+    height: 22px;
+    line-height: 20px;
+    margin-top: 5px;
+    padding: 0 15px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
 }
 
 #tabber li:hover span {
-	height: 27px;
-	line-height: 28px;
-	margin-top: 0;
+    height: 27px;
+    line-height: 28px;
+    margin-top: 0;
 }
 
 #tabber li.active span {
-	background: none repeat scroll 0 0 #eee;
-	height: 28px;
-	margin-top: 0px;
-	line-height: 28px;
+    background: none repeat scroll 0 0 #eee;
+    height: 28px;
+    margin-top: 0px;
+    line-height: 28px;
+}
+
+.ready {
+    color: green;
+}
+
+.ready:hover {
+    cursor: pointer;
+}
+
+.notReady {
+    color: red;
+}
+
+#shortPauseGame {
+    float: left;
+}
+
+#resumeShortPausedGame {
+    float: left;
+}
+
+#longPauseGame {
+    float: left;
+}
+
+#playerForfeitButton {
+    float: left;
 }

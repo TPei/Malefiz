@@ -1,39 +1,77 @@
-/* A User object has a username and score 
-each User provides:
-- a function getName() to return the _username
-- a function getScore() to return the _highscore
-- a function save() to save the User to localStorage */
-
 "use strict";
 
-function User(username, score){
-    var _username = username;
-    var _highscore = score;
-    
-    this.save = function(){
+/**
+ * A User object has a username and score
+ * @param {String} usernamee
+ * @param {number} scoree
+ * @constructor
+ * @this {User}
+ */
+function User(usernamee, scoree) {
+
+    var instance;
+
+    /**
+     * The username.
+     * @type {String}
+     */
+    var username = usernamee;
+
+    /**
+     * The highscore
+     * @type {number}
+     */
+    var highscore = scoree;
+
+    /**
+     * Saves the user in webstorage as a json string.
+     */
+    this.save = function () {
         //save user in webstorage
-        var newUser = {"username" : _username, "highscore": _highscore};
-        
+        var newUser = {"username": username, "highscore": highscore};
         localStorage.setItem("user", JSON.stringify(newUser));
     }
-    
-    this.getName = function(){
-	    return _username;
+
+    /**
+     * Returns the username.
+     * @returns {String}
+     */
+    this.getUsername = function () {
+        return username;
     }
-    
-    this.getScore = function(){
-	    return _highscore;
+
+    /**
+     * Returns the highscore
+     * @returns {number}
+     */
+    this.getScore = function () {
+        return highscore;
     }
+
+    /**
+     * adds a win, increasing high score by 1
+     */
+    this.addWin = function () {
+        highscore++;
+        var newUser = {"username": username, "highscore": highscore};
+        localStorage.setItem("user", JSON.stringify(newUser));
+    }
+
 }
 
-/* static method that creates a user by loading it from storage
-returns null if there is no localStorage User */
-User.load = function(){
+/**
+ * static method that creates a user by loading it from storage
+ * returns null if there is no localStorage User
+ * @returns {*}
+ */
+User.load = function () {
+
     // do the web storage access
     var storage = JSON.parse(localStorage.getItem("user"));
-    
-    if(storage === null){
-	    return false;
+
+    if (storage === null) {
+        return false;
     }
+
     return new User(storage.username, storage.highscore);
 }
